@@ -1,0 +1,65 @@
+/* Styles for small screen sizes (up to 767px) */
+@media only screen and (max-width: 767px) {
+  button.close-nav,
+  button.open-nav {
+    display: grid !important;
+  }
+  .hero h1 {
+    font-size: 3rem;
+  }
+
+  .hide-menu {
+    display: none !important;
+  }
+  header nav ul {
+    position: fixed;
+    top: 0;
+    background: #fff;
+    flex-direction: column;
+    height: auto;
+    width: 100%;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    align-items: center;
+    justify-content: center;
+
+    li {
+      height: auto !important;
+    }
+
+    .my-account {
+      display: none !important;
+    }
+
+    .hidden-menu-links {
+      display: flex;
+    }
+  }
+}
+
+/* Styles for medium screen sizes (768px to 1023px) */
+@media only screen and (max-width: 1023px) {
+  .hero.small {
+    height: 400px;
+    padding-top: 0px;
+  }
+
+  .hero-input-wrapper {
+    flex-direction: column;
+
+    > button {
+      height: 50px;
+      width: 100% !important;
+      max-width: unset;
+    }
+  }
+
+  .hero {
+    margin-top: 70px;
+  }
+
+  .job-display-wrapper .job-display-container article {
+    width: 100%;
+  }
+}

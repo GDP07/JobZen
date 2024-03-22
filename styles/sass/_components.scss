@@ -1,0 +1,232 @@
+.input-container {
+  position: relative;
+  height: 50px;
+  background-color: rgb(255, 255, 255);
+  width: 250px;
+  border-radius: 5px;
+
+  input {
+    height: 100%;
+    border: none;
+    outline: none;
+    padding: 1rem;
+    padding-top: 1.3rem;
+    background-color: transparent;
+    z-index: 1;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+  }
+
+  label {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 1rem;
+    transition: all 0.2s ease-in-out;
+    z-index: 0;
+    user-select: none;
+    color: #000000b8;
+  }
+
+  input:not(:placeholder-shown) + label {
+    top: 12px;
+    font-size: 0.7rem;
+  }
+
+  &.show-image {
+    width: fit-content;
+    height: fit-content;
+    display: none;
+
+    button {
+      position: absolute;
+      right: 0;
+      width: 50px;
+      border-radius: 0 0 0 100%;
+      padding-bottom: 0.5rem;
+      padding-left: 0.5rem;
+      background-color: red;
+
+      svg {
+        width: 0.9rem;
+
+        path {
+          fill: #fff;
+        }
+      }
+    }
+
+    img {
+      width: 150px;
+      object-fit: cover;
+    }
+  }
+
+  &.with-image {
+    height: 60px;
+
+    label {
+      font-size: 1rem;
+      font-weight: 500;
+      color: #000;
+    }
+
+    input {
+      padding-top: 1.5rem;
+    }
+  }
+
+  &.with-textarea {
+    height: 250px;
+    height: fit-content;
+
+    label {
+      top: 23px;
+    }
+
+    textarea {
+      border: none;
+      outline: none;
+      padding: 1rem;
+      background-color: transparent;
+      z-index: 1;
+      width: 100%;
+      min-height: 250px;
+      resize: vertical;
+    }
+
+    textarea:not(:placeholder-shown) + label {
+      top: 12px;
+      font-size: 0.7rem;
+    }
+  }
+
+  &.with-drop-down {
+    button {
+      display: none;
+      border-radius: 5px;
+      background-color: rgb(255, 255, 255);
+      border: none;
+      position: absolute;
+      height: 100%;
+      width: 50px;
+      right: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      cursor: pointer;
+      z-index: 50;
+
+      svg {
+        width: 0.5rem;
+      }
+    }
+
+    ul {
+      display: none;
+      position: absolute;
+      background-color: #fbfbfb;
+      top: 105%;
+      min-width: 100%;
+      width: fit-content;
+      max-height: 200px;
+      overflow: auto;
+      list-style: none;
+      z-index: 99;
+      border: 1px solid rgba(0, 0, 0, 0.1215686275);
+      padding-bottom: 1rem;
+      li {
+        padding-inline: 1rem;
+        padding-top: 1rem;
+        cursor: pointer;
+      }
+    }
+  }
+}
+
+.alert-wrapper {
+  position: fixed;
+  top: 0;
+  right: 0;
+  padding: 1rem;
+  z-index: 9999999;
+  pointer-events: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+
+  .alert {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 200px;
+    min-height: 40px;
+    padding: 0.5rem;
+    position: relative;
+    color: #fff;
+    font-size: 0.8rem;
+    padding-inline: 1.5rem;
+    border: 1px solid transparent;
+
+    &.success {
+      color: #155724;
+      background-color: #d4edda;
+      border-color: #c3e6cb;
+
+      &::after {
+        background-color: green;
+      }
+    }
+
+    &.warning {
+      background-color: #f8d7da;
+      color: #721c24;
+      border-color: #f5c6cb;
+
+      &::after {
+        background-color: red;
+      }
+    }
+
+    &::after {
+      content: "";
+      position: absolute;
+      width: 100%;
+      height: 5px;
+      bottom: 0;
+      left: 0;
+      right: 0;
+
+      animation: animateWidth 3s ease-in-out forwards;
+    }
+  }
+}
+
+@keyframes animateWidth {
+  0% {
+    width: 100%;
+  }
+  100% {
+    width: 0;
+  }
+}
+
+.pagination {
+  width: 100%;
+  display: flex;
+  gap: 0.5rem;
+
+  a {
+    padding: 0.5rem;
+    background-color: #fbfbfb;
+    border: 1px solid rgba(0, 0, 0, 0.1215686275);
+    color: #000;
+    font-weight: 600;
+    text-decoration: none;
+
+    &.active {
+      color: #155724;
+      background-color: #d1d1d1;
+    }
+  }
+}
