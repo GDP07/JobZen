@@ -42,7 +42,11 @@ try {
         if (!empty($_FILES['bannerImage']['name'])) {
             $bannerImage = $_FILES['bannerImage']['name'];
             $targetDir = "../jobBanners/";
-            $targetFile = $targetDir . basename($_FILES["bannerImage"]["name"]);
+            $imageFileType = strtolower(pathinfo($_FILES["bannerImage"]["name"], PATHINFO_EXTENSION));
+            $uniqueImageName = uniqid('banner_', true) . '.' . $imageFileType;
+            $targetFile = $targetDir . $uniqueImageName;
+
+            $bannerImage = $uniqueImageName;
             if (!move_uploaded_file($_FILES["bannerImage"]["tmp_name"], $targetFile)) {
                 throw new Exception("Failed to upload new image");
             }

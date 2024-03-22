@@ -1136,7 +1136,18 @@ footer .footer-bottom p {
   .hero {
     margin-top: 70px;
   }
-  .job-display-wrapper .job-display-container article {
+  .job-display-wrapper .job-display-container article,
+  .job-display-wrapper .job-applicants-container article {
     width: 100%;
+  }
+  .job-display-wrapper .job-display-container article.my-jobs .button-wrapper {
+    flex-wrap: wrap;
+  }
+  .job-display-wrapper .job-display-container article .col-3,
+  .job-display-wrapper .job-display-container article .col-2 {
+    width: 100%;
+  }
+  .job-display-wrapper .job-display-container article .col-3 {
+    align-items: flex-start;
   }
 }/*# sourceMappingURL=index.css.map */

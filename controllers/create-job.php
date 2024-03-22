@@ -32,8 +32,11 @@ try {
 
         if ($bannerImage) {
             $targetDir = "../jobBanners/";
-            $targetFile = $targetDir . basename($_FILES["bannerImage"]["name"]);
+            $fileExtension = pathinfo($_FILES["bannerImage"]["name"], PATHINFO_EXTENSION);
+            $uniqueFileName = uniqid("banner_", true) . "." . $fileExtension;
+            $targetFile = $targetDir . $uniqueFileName;
             move_uploaded_file($_FILES["bannerImage"]["tmp_name"], $targetFile);
+            $bannerImage =  $uniqueFileName;
         }
 
         if ($stmt->execute()) {

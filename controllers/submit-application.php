@@ -15,11 +15,13 @@ try {
         $stmt->bind_param("sssssss", $name, $userId, $jobid, $email, $coverLetter, $cv, $contact);
 
         $targetDir = "../cv/";
-        $targetFile = $targetDir . basename($_FILES["uploadCv"]["name"]);
+        $fileName = uniqid() . "_" . basename($_FILES["uploadCv"]["name"]);
+        $targetFile = $targetDir . $fileName;
 
         if (move_uploaded_file($_FILES["uploadCv"]["tmp_name"], $targetFile)) {
+            $cv = $fileName;
             if ($stmt->execute()) {
-                echo json_encode(array("success" => true, "jobId" => $jobid));
+                echo json_encode(array("success" => true, "jobId" => $jobid, "cv" => $fileName));
             } else {
                 echo json_encode(array("success" => false, "message" => "Failed to submit application"));
             }

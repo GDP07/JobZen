@@ -104,8 +104,7 @@ if (document.getElementById('bannerUpdateImage')) {
 
 if (document.getElementById('clearImageBtn')) {
     document.getElementById('clearImageBtn').addEventListener('click', function () {
-        var input = document.getElementById('bannerImage');
-        input.value = '';
+
         var showImage = document.querySelector('.show-image');
         if (showImage) {
             showImage.style.display = 'none';
@@ -115,8 +114,6 @@ if (document.getElementById('clearImageBtn')) {
 
 if (document.getElementById('clearImageUpdateBtn')) {
     document.getElementById('clearImageUpdateBtn').addEventListener('click', function () {
-        var input = document.getElementById('bannerImage');
-        input.value = '';
 
         var imageNotEmptyInput = document.getElementById('imageNotEmpty');
         var removedImageInput = document.getElementById('removedImage');
