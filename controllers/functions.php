@@ -40,7 +40,7 @@ function fetchLatestJobs()
                 <h1>' . $row["title"] . '</h1>
                 <h2>' . $row["company"] . '</h2>
                 <h2>' . $row["location"] . '</h2>
-                <h2>' . $row["monthly_pay"] . '</h2>
+                <h2>' . ($row["monthly_pay"] == 0 ? "" : $row["monthly_pay"])  . '</h2>
                 <h3>Closing date : ' . $row["closing_date"] . '</h3>
             </div>
             <div class="col col-3">
@@ -225,7 +225,7 @@ function fetchJobs()
                 <h1>' . $row["title"] . '</h1>
                 <h2>' . $row["company"] . '</h2>
                 <h2>' . $row["location"] . '</h2>
-                <h2>' . $row["monthly_pay"] . '</h2>
+                <h2>' . ($row["monthly_pay"] == 0 ? "" : $row["monthly_pay"])  . '</h2>
                 <h3>Closing date : ' . $row["closing_date"] . '</h3>
             </div>
             <div class="col col-3">
@@ -258,13 +258,24 @@ function fetchJobs()
         $showPages = 2;
         $startPage = max(1, min($page - $showPages, $totalPages - 2 * $showPages));
         $endPage = min($totalPages, $startPage + 2 * $showPages);
+
         if ($page > 1) {
             $output .= '<a href="?page=' . ($page - 1);
             if ($location) $output .= '&location=' . $location;
             if ($type) $output .= '&type=' . $type;
             if ($category) $output .= '&category=' . $category;
-            $output .= '">Previous</a>';
+            $output .= '"><<</a>';
         }
+
+        // Add first page
+        if ($startPage > 1) {
+            $output .= '<a href="?page=1';
+            if ($location) $output .= '&location=' . $location;
+            if ($type) $output .= '&type=' . $type;
+            if ($category) $output .= '&category=' . $category;
+            $output .= '">1</a>';
+        }
+
         for ($i = $startPage; $i <= $endPage; $i++) {
             $output .= '<a href="?page=' . $i;
             if ($location) $output .= '&location=' . $location;
@@ -276,12 +287,22 @@ function fetchJobs()
             }
             $output .= '>' . $i . '</a>';
         }
+
+        // Add last page
+        if ($endPage < $totalPages) {
+            $output .= '<a href="?page=' . $totalPages;
+            if ($location) $output .= '&location=' . $location;
+            if ($type) $output .= '&type=' . $type;
+            if ($category) $output .= '&category=' . $category;
+            $output .= '">' . $totalPages . '</a>';
+        }
+
         if ($page < $totalPages) {
             $output .= '<a href="?page=' . ($page + 1);
             if ($location) $output .= '&location=' . $location;
             if ($type) $output .= '&type=' . $type;
             if ($category) $output .= '&category=' . $category;
-            $output .= '">Next</a>';
+            $output .= '">>></a>';
         }
         $output .= '</div>';
     } else {

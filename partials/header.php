@@ -13,9 +13,11 @@ $current_page = basename($_SERVER['PHP_SELF']);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./styles/index.css">
     <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+
+    
     <script src="./scripts/index.js" defer></script>
     <script src="./scripts/reuests.js" defer></script>
-    <title>Document</title>
+    <title>Jobzen</title>
 </head>
 
 <body>
